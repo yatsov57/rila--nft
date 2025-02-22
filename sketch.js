@@ -1,7 +1,7 @@
 let weather = "clear";
 let timeOfDay = 0;
 let rainDrops = [];
-let apiKey = "0ea6e0f0f8e1d7a98c4f27b86ba4a92d"; // 
+let apiKey = "0ea6e0f0f8e1d7a98c4f27b86ba4a92d"; // Замени с твоя ключ
 let city = "Sofia";
 
 function setup() {
@@ -9,19 +9,7 @@ function setup() {
   for (let i = 0; i < 50; i++) {
     rainDrops.push({ x: random(width), y: random(height), speed: random(2, 5) });
   }
-  function fetchWeather() {
-  let url = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      weather = data.weather[0].main.toLowerCase();
-      let sunrise = data.sys.sunrise * 1000;
-      let sunset = data.sys.sunset * 1000;
-      let now = Date.now();
-      timeOfDay = constrain(map(now, sunrise, sunset, 0, 1), 0, 1);
-      console.log("Weather:", weather, "Time of Day:", timeOfDay);
-    })
-    .catch(error => console.error("Error:", error));
+  fetchWeather();
 }
 
 function draw() {
@@ -54,7 +42,7 @@ function draw() {
 }
 
 function fetchWeather() {
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  let url = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
