@@ -1,7 +1,7 @@
 let weather = "clear";
 let timeOfDay = 0;
 let rainDrops = [];
-let apiKey = "0ea6e0f0f8e1d7a98c4f27b86ba4a92d"; // 
+let apiKey = "0ea6e0f0f8e1d7a98c4f27b86ba4a92d"; 
 let city = "Sofia";
 
 function setup() {
